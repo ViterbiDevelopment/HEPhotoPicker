@@ -256,6 +256,13 @@ class HEPhotoBrowserViewController: HEBaseViewController {
     
 }
 extension HEPhotoBrowserViewController : HETargetViewControllerDelegate{
+
+    var targetView: UIView! {
+      get {
+        return self.view
+      }
+    }
+
     public func getTargetImageView() -> UIImageView {
         guard self.models.count > imageIndex.row else {
             return UIImageView()

@@ -125,6 +125,11 @@ class BrowserViewController: UIViewController {
     
 }
 extension BrowserViewController : HETargetViewControllerDelegate{
+  
+    var targetView: UIView! {
+      return self.view
+    }
+
     public func getTargetImageView() -> UIImageView {
         guard self.models.count > imageIndex.row else {
             return UIImageView()
@@ -145,6 +150,7 @@ extension BrowserViewController : HETargetViewControllerDelegate{
         imageView.layer.masksToBounds = true
         return imageView
     }
+
 }
 extension BrowserViewController : UICollectionViewDelegate,UICollectionViewDataSource,UIScrollViewDelegate{
     func numberOfSections(in collectionView: UICollectionView) -> Int {

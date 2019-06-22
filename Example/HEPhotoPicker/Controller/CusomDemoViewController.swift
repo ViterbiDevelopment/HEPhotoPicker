@@ -27,6 +27,7 @@ import UIKit
 import Photos
 import HEPhotoPicker
 
+
 class CusomDemoViewController: UIViewController {
 
     @IBOutlet weak var singleVideoView: UIView!

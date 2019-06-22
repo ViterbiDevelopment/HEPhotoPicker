@@ -26,13 +26,15 @@
 import UIKit
 
 //MARK: - push或者present目标vc需要实现的协议
-public protocol HETargetViewControllerDelegate : UIViewController {
-    
+public protocol HETargetViewControllerDelegate {
+
+    var targetView:UIView! { get }
      /// 目标vc需要展示的UIImageView
      ///
      /// - Returns: 目标vc需要展示的UIImageView
      func getTargetImageView() -> UIImageView
 }
+
 //MARK: - 定义协议用来拿到图片起始位置;最终位置和图片
 public protocol HEPhotoBrowserAnimatorPushDelegate : class {
     
@@ -149,7 +151,7 @@ public class HEPhotoBrowserAnimator: NSObject {
         let backgroundView = UIView.init(frame: containerView.bounds)
         backgroundView.backgroundColor = UIColor.black
         containerView.addSubview(backgroundView)
-        containerView.addSubview(toViewController.view)
+        containerView.addSubview(toViewController.targetView)
         
         let animateImageView = toViewController.getTargetImageView()
         animateImageView.frame =  pushDel.imageViewRectOfAnimatorStart(at: indexPath)
@@ -157,7 +159,7 @@ public class HEPhotoBrowserAnimator: NSObject {
         
        
         let targartSize = zommView(orgmSize: toViewController.getTargetImageView().frame.size)
-        toViewController.view.isHidden = true
+        toViewController.targetView.isHidden = true
         
         UIView.animate(withDuration: transitionDuration(using: transitionContext), delay: 0, options: UIView.AnimationOptions.curveEaseInOut, animations: {
             
@@ -167,7 +169,7 @@ public class HEPhotoBrowserAnimator: NSObject {
         },completion: { finished in
             
             backgroundView.removeFromSuperview()
-            toViewController.view.isHidden = false
+            toViewController.targetView.isHidden = false
             transitionContext.completeTransition(true)
         })
     }
