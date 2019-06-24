@@ -27,6 +27,7 @@ import UIKit
 
 class HESeletecedButton: UIButton {
 
+    var gl: CAGradientLayer?
     //MARK:- 重写init函数
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -41,6 +42,26 @@ class HESeletecedButton: UIButton {
         titleLabel?.font = UIFont.systemFont(ofSize: 14)
 
     }
+
+  func setGradientLayer() {
+
+    if gl == nil {
+      gl = CAGradientLayer()
+      gl!.frame = bounds
+      gl!.startPoint = CGPoint(x: 0, y: 0.5)
+      gl!.endPoint = CGPoint(x: 1, y: 0.5)
+      gl!.colors = [
+        UIColor(red: 252 / 255.0, green: 128 / 255.0, blue: 131 / 255.0, alpha: 1.0).cgColor,
+        UIColor(red: 251 / 255.0, green: 82 / 255.0, blue: 136 / 255.0, alpha: 1.0).cgColor
+      ]
+      gl!.locations = [NSNumber(value: 0), NSNumber(value: 1.0)]
+
+      layer.insertSublayer(gl!, at: 0)
+    } else {
+      gl?.frame = bounds
+    }
+
+  }
     
     func setTitle(_ title:String)  {
         setTitle(title, for: .normal)
