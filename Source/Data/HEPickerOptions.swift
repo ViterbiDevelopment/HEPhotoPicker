@@ -45,6 +45,9 @@ open class HEPickerOptions: NSObject {
     public var maxCountOfImage = 9
     /// 挑选视频的最大个数
     public var maxCountOfVideo = 2
+    /// 支持筛选视频时长
+    public var supportFilterVideoDuration = false
+    public var maxVideoDuration = 60// 支持视频最长
     /// 是否支持图片单选，默认是false，如果是ture只允许选择一张图片（如果 mediaType = imageAndVideo 或者 imageOrVideo 此属性无效）
     public var singlePicture = false
     /// 是否支持视频单选 默认是false，如果是ture只允许选择一个视频（如果 mediaType = imageAndVideo 此属性无效）
@@ -61,5 +64,6 @@ open class HEPickerOptions: NSObject {
     public var selectDoneButtonTitle = "选择"
     public var maxPhotoWaringTips = "最多只能选择%d个照片"
     public var maxVideoWaringTips = "最多只能选择%d个视频"
+    public var maxDurationWaringTips = "视频最长支持%d S"
     
 }

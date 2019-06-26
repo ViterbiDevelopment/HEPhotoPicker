@@ -267,6 +267,14 @@ public class HEPhotoPickerViewController: HEBaseViewController {
                     selectedBtn.isSelected = false
                     return
                 }
+                if self.pickerOptions.supportFilterVideoDuration {
+                  if self.pickerOptions.maxVideoDuration < Int(model.asset.duration) {
+                    let title = String.init(format: pickerOptions.maxDurationWaringTips, self.pickerOptions.maxVideoDuration)
+                    HETool.presentAlert(title: title, viewController: self)
+                    selectedBtn.isSelected = false
+                    return
+                  }
+                }
             default:
                 break
             }
@@ -549,7 +557,6 @@ extension HEPhotoPickerViewController : UICollectionViewDelegate,UICollectionVie
                 self.models[selectedIndex].isSelected = true
                 self.selectedModels.append(self.models[selectedIndex])
                 self.updateUI()
-                
             }
             photoDetail.unSelectedCloser = { selectedIndex in
                 self.models[selectedIndex].isSelected = false

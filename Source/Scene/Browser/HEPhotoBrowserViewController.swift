@@ -212,7 +212,13 @@ class HEPhotoBrowserViewController: HEBaseViewController {
                     HETool.presentAlert(title: title, viewController: self)
                     return
                 }
-                
+                if self.pickerOptions.supportFilterVideoDuration {
+                  if self.pickerOptions.maxVideoDuration < Int(model.asset.duration) {
+                    let title = String.init(format: self.pickerOptions.maxDurationWaringTips, self.pickerOptions.maxVideoDuration)
+                    HETool.presentAlert(title: title, viewController: self)
+                    return
+                  }
+                }
             }
         }
         btn.isSelected = !btn.isSelected
