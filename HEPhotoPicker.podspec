@@ -28,7 +28,7 @@ s.author           = { 'heyode' => '1025335931@qq.com' }
 s.source           = { :git => "https://github.com/heyode/HEPhotoPicker.git", :tag => "#{s.version}" }
 # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-s.ios.deployment_target = '9.0'
+s.ios.deployment_target = '8.0'
 s.swift_version = '5.0'
 s.source_files = ["Source/**/*.swift"]
 
